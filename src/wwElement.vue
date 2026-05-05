@@ -35,7 +35,7 @@
                             <svg v-else viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <polyline
                                     points="1.5,6.5 4.5,9.5 10.5,2.5"
-                                    :stroke="props.content?.markColor || '#ffffff'"
+                                    stroke="currentColor"
                                     stroke-width="1.75"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
@@ -50,7 +50,7 @@
                                     y1="6"
                                     x2="10"
                                     y2="6"
-                                    :stroke="props.content?.markColor || '#ffffff'"
+                                    stroke="currentColor"
                                     stroke-width="1.75"
                                     stroke-linecap="round"
                                 />
@@ -159,6 +159,7 @@ export default {
             '--cb-unchecked-border': props.content?.uncheckedBorderColor || '#d1d5db',
             '--cb-unchecked-bg': props.content?.uncheckedBgColor || '#ffffff',
             '--cb-invalid-border': props.content?.invalidBorderColor || '#ef4444',
+            '--cb-readonly-opacity': props.content?.readonlyOpacity ?? 1,
             '--cb-checked-hover': props.content?.checkedHoverColor || '#2563eb',
             '--cb-focus-ring-color': props.content?.focusRingColor || '#93c5fd',
             '--cb-focus-ring-width': props.content?.focusRingWidth || '3px',
@@ -287,6 +288,7 @@ context.local.data?.['checkbox']?.['isIndeterminate']
 
     &.is-readonly {
         cursor: default;
+        opacity: var(--cb-readonly-opacity);
     }
 }
 

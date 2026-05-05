@@ -24,9 +24,24 @@ export default {
                 properties: ['checkmarkSvg', 'indeterminateSvg'],
             },
             {
-                label: 'States',
+                label: 'Focus-visible',
                 isCollapsible: true,
-                properties: ['invalidBorderColor', 'focusRingColor', 'focusRingWidth', 'focusRingOffset', 'disabledOpacity'],
+                properties: ['focusRingColor', 'focusRingWidth', 'focusRingOffset'],
+            },
+            {
+                label: 'Invalid',
+                isCollapsible: true,
+                properties: ['invalidBorderColor'],
+            },
+            {
+                label: 'Disabled',
+                isCollapsible: true,
+                properties: ['disabledOpacity'],
+            },
+            {
+                label: 'Read-only',
+                isCollapsible: true,
+                properties: ['readonlyOpacity'],
             },
         ],
     },
@@ -562,6 +577,23 @@ export default {
             bindingValidation: {
                 type: 'number',
                 tooltip: 'Opacity of the checkbox when disabled (0–1).',
+            },
+            /* wwEditor:end */
+        },
+
+        // ─── Style: Read-only ─────────────────────────────────────────────────
+
+        readonlyOpacity: {
+            label: { en: 'Opacity' },
+            type: 'Number',
+            section: 'style',
+            options: { min: 0, max: 1, step: 0.05 },
+            defaultValue: 1,
+            bindable: true,
+            /* wwEditor:start */
+            bindingValidation: {
+                type: 'number',
+                tooltip: 'Opacity of the checkbox when read-only (0–1).',
             },
             /* wwEditor:end */
         },
