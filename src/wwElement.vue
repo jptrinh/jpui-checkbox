@@ -2,7 +2,12 @@
     <div class="checkbox-wrapper" :class="{ 'is-disabled': props.content?.disabled }" :style="wrapperStyle">
         <div class="checkbox-inner">
             <!-- Left label dropzone -->
-            <div v-if="props.content?.labelPosition === 'left'" class="checkbox-label">
+            <div
+                v-if="props.content?.labelPosition === 'left'"
+                class="checkbox-label"
+                :class="{ 'is-clickable': props.content?.clickableLabel !== false }"
+                @click="props.content?.clickableLabel !== false ? handleToggle() : undefined"
+            >
                 <wwLayout path="dropzoneContent" direction="row" />
             </div>
 
@@ -61,7 +66,12 @@
             </button>
 
             <!-- Right label dropzone (default) -->
-            <div v-if="props.content?.labelPosition !== 'left'" class="checkbox-label">
+            <div
+                v-if="props.content?.labelPosition !== 'left'"
+                class="checkbox-label"
+                :class="{ 'is-clickable': props.content?.clickableLabel !== false }"
+                @click="props.content?.clickableLabel !== false ? handleToggle() : undefined"
+            >
                 <wwLayout path="dropzoneContent" direction="row" />
             </div>
         </div>
@@ -169,6 +179,7 @@ export default {
             '--cb-icon-size': props.content?.iconSize || '65%',
             '--cb-shadow': props.content?.shadow || 'none',
             '--cb-anim-duration': `${props.content?.animationDuration ?? 150}ms`,
+            '--cb-cursor': props.content?.cursorPointer !== false ? 'pointer' : 'default',
         }));
 
         // ─── Local context ──────────────────────────────────────────────────────
@@ -245,7 +256,7 @@ context.local.data?.['checkbox']?.['isIndeterminate']
     padding: 0;
     margin: 0;
     appearance: none;
-    cursor: pointer;
+    cursor: var(--cb-cursor);
     box-shadow: var(--cb-shadow);
     transition: background-color var(--cb-anim-duration) ease, border-color var(--cb-anim-duration) ease, box-shadow var(--cb-anim-duration) ease;
 
@@ -363,5 +374,6 @@ context.local.data?.['checkbox']?.['isIndeterminate']
     display: flex;
     align-items: center;
     min-width: 0;
+    cursor: var(--cb-cursor);
 }
 </style>

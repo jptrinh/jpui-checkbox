@@ -122,6 +122,34 @@ export default {
             /* wwEditor:end */
         },
 
+        cursorPointer: {
+            label: { en: 'Cursor pointer' },
+            type: 'OnOff',
+            section: 'style',
+            defaultValue: true,
+            bindable: true,
+            /* wwEditor:start */
+            bindingValidation: {
+                type: 'boolean',
+                tooltip: 'When enabled, shows a pointer cursor on the checkbox box and label.',
+            },
+            /* wwEditor:end */
+        },
+
+        clickableLabel: {
+            label: { en: 'Clickable label' },
+            type: 'OnOff',
+            section: 'settings',
+            defaultValue: true,
+            bindable: true,
+            /* wwEditor:start */
+            bindingValidation: {
+                type: 'boolean',
+                tooltip: 'When enabled, clicking the label dropzone also toggles the checkbox.',
+            },
+            /* wwEditor:end */
+        },
+
         labelPosition: {
             label: { en: 'Label position' },
             type: 'TextSelect',
