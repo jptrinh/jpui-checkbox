@@ -230,6 +230,7 @@ context.local.data?.['checkbox']?.['isIndeterminate']
 }
 
 .checkbox-box {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -246,6 +247,13 @@ context.local.data?.['checkbox']?.['isIndeterminate']
     cursor: pointer;
     box-shadow: var(--cb-shadow);
     transition: background-color var(--cb-anim-duration) ease, border-color var(--cb-anim-duration) ease, box-shadow var(--cb-anim-duration) ease;
+
+    // Expand clickable area to 44px minimum touch target without affecting layout
+    &::after {
+        content: '';
+        position: absolute;
+        inset: -8px -12px;
+    }
 
     // Checked or indeterminate: fill with primary color
     &.is-checked,
