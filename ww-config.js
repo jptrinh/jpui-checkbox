@@ -4,9 +4,14 @@ export default {
         icon: 'checkbox',
         customStylePropertiesOrder: [
             {
+                label: 'Layout',
+                isCollapsible: true,
+                properties: ['labelPosition', 'verticalAlign'],
+            },
+            {
                 label: 'Box',
                 isCollapsible: true,
-                properties: ['size', 'iconSize', 'borderRadius', 'borderWidth', 'gap', 'shadow', 'animationDuration'],
+                properties: ['size', 'iconSize', 'borderRadius', 'borderWidth', 'gap', 'marginTop', 'marginBottom', 'shadow', 'animationDuration'],
             },
             {
                 label: 'Unchecked',
@@ -153,7 +158,7 @@ export default {
         labelPosition: {
             label: { en: 'Label position' },
             type: 'TextSelect',
-            section: 'settings',
+            section: 'style',
             options: {
                 options: [
                     { value: 'right', label: 'Right' },
@@ -166,6 +171,27 @@ export default {
             bindingValidation: {
                 type: 'string',
                 tooltip: "Valid values: 'right' | 'left'",
+            },
+            /* wwEditor:end */
+        },
+
+        verticalAlign: {
+            label: { en: 'Vertical align' },
+            type: 'TextSelect',
+            section: 'style',
+            options: {
+                options: [
+                    { value: 'top', label: 'Top' },
+                    { value: 'center', label: 'Center' },
+                    { value: 'bottom', label: 'Bottom' },
+                ],
+            },
+            defaultValue: 'center',
+            bindable: true,
+            /* wwEditor:start */
+            bindingValidation: {
+                type: 'string',
+                tooltip: "Valid values: 'top' | 'center' | 'bottom'",
             },
             /* wwEditor:end */
         },
@@ -365,6 +391,52 @@ export default {
             bindingValidation: {
                 type: 'string',
                 tooltip: 'Space between the checkbox box and the label dropzone.',
+            },
+            /* wwEditor:end */
+        },
+
+        marginTop: {
+            label: { en: 'Margin top' },
+            type: 'Length',
+            section: 'style',
+            options: {
+                unitChoices: [
+                    { value: 'px', label: 'px', min: 0, max: 128 },
+                    { value: 'rem', label: 'rem', min: 0, max: 8 },
+                ],
+                noRange: true,
+                useVar: true,
+            },
+            defaultValue: '0px',
+            bindable: true,
+            responsive: true,
+            /* wwEditor:start */
+            bindingValidation: {
+                type: 'string',
+                tooltip: 'Top margin applied to the checkbox box (e.g. "4px").',
+            },
+            /* wwEditor:end */
+        },
+
+        marginBottom: {
+            label: { en: 'Margin bottom' },
+            type: 'Length',
+            section: 'style',
+            options: {
+                unitChoices: [
+                    { value: 'px', label: 'px', min: 0, max: 128 },
+                    { value: 'rem', label: 'rem', min: 0, max: 8 },
+                ],
+                noRange: true,
+                useVar: true,
+            },
+            defaultValue: '0px',
+            bindable: true,
+            responsive: true,
+            /* wwEditor:start */
+            bindingValidation: {
+                type: 'string',
+                tooltip: 'Bottom margin applied to the checkbox box (e.g. "4px").',
             },
             /* wwEditor:end */
         },

@@ -180,6 +180,9 @@ export default {
             '--cb-shadow': props.content?.shadow || 'none',
             '--cb-anim-duration': `${props.content?.animationDuration ?? 150}ms`,
             '--cb-cursor': props.content?.cursorPointer !== false ? 'pointer' : 'default',
+            '--cb-vertical-align': { top: 'flex-start', center: 'center', bottom: 'flex-end' }[props.content?.verticalAlign] || 'center',
+            '--cb-margin-top': props.content?.marginTop || '0px',
+            '--cb-margin-bottom': props.content?.marginBottom || '0px',
         }));
 
         // ─── Local context ──────────────────────────────────────────────────────
@@ -237,7 +240,7 @@ context.local.data?.['checkbox']?.['isIndeterminate']
 <style lang="scss" scoped>
 .checkbox-inner {
     display: flex;
-    align-items: center;
+    align-items: var(--cb-vertical-align);
     gap: var(--cb-gap);
 }
 
@@ -254,7 +257,7 @@ context.local.data?.['checkbox']?.['isIndeterminate']
     border: var(--cb-border-width) solid var(--cb-unchecked-border);
     background-color: var(--cb-unchecked-bg);
     padding: 0;
-    margin: 0;
+    margin: var(--cb-margin-top) 0 var(--cb-margin-bottom);
     appearance: none;
     cursor: var(--cb-cursor);
     box-shadow: var(--cb-shadow);
