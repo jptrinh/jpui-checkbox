@@ -98,7 +98,6 @@ export default {
         const selectForm = inject('_wwForm:selectForm', () => {});
         /* wwEditor:end */
 
-        // Internal variable — holds true | false | null (indeterminate)
         const { value: internalValue, setValue: setInternalValue } = wwLib.wwVariable.useComponentVariable({
             uid: props.uid,
             name: 'value',
@@ -106,7 +105,6 @@ export default {
             defaultValue: props.content?.initialValue ?? false,
         });
 
-        // Reset value when initialValue prop changes
         watch(
             () => props.content?.initialValue,
             newValue => {
@@ -141,20 +139,11 @@ export default {
         const handleToggle = () => {
             if (props.content?.disabled || props.content?.readonly) return;
 
-            // null (indeterminate) → true, true → false, false → true
-            const newValue = internalValue.value === true ? false : true;
-
+            const newValue = internalValue.value !== true;
             setInternalValue(newValue);
 
             emit('trigger-event', { name: 'change', event: { value: newValue } });
-
-            if (newValue === true) {
-                emit('trigger-event', { name: 'checked', event: { value: true } });
-            } else if (newValue === false) {
-                emit('trigger-event', { name: 'unchecked', event: { value: false } });
-            } else {
-                emit('trigger-event', { name: 'indeterminate', event: { value: null } });
-            }
+            emit('trigger-event', { name: newValue ? 'checked' : 'unchecked', event: { value: newValue } });
         };
 
         // ─── Styles ─────────────────────────────────────────────────────────────
@@ -180,7 +169,7 @@ export default {
             '--cb-shadow': props.content?.shadow || 'none',
             '--cb-anim-duration': `${props.content?.animationDuration ?? 150}ms`,
             '--cb-cursor': props.content?.cursorPointer !== false ? 'pointer' : 'default',
-            '--cb-vertical-align': { top: 'flex-start', center: 'center', bottom: 'flex-end' }[props.content?.verticalAlign] || 'center',
+            '--cb-vertical-align': { top: 'flex-start', center: 'center', bottom: 'flex-end' }[props.content?.verticalAlign] ?? 'center',
             '--cb-margin-top': props.content?.marginTop || '0px',
             '--cb-margin-bottom': props.content?.marginBottom || '0px',
         }));

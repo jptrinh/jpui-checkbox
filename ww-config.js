@@ -6,7 +6,7 @@ export default {
             {
                 label: 'Layout',
                 isCollapsible: true,
-                properties: ['labelPosition', 'verticalAlign'],
+                properties: ['labelPosition', 'verticalAlign', 'cursorPointer'],
             },
             {
                 label: 'Box',
