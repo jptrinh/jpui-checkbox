@@ -31,7 +31,7 @@ export default {
             {
                 label: 'Invalid',
                 isCollapsible: true,
-                properties: ['invalidBorderColor'],
+                properties: ['invalidBorderColor', 'invalidFocusRingColor'],
             },
             {
                 label: 'Disabled',
@@ -507,6 +507,23 @@ export default {
             bindingValidation: {
                 type: 'string',
                 tooltip: 'Border color shown when the checkbox is in an invalid state.',
+            },
+            /* wwEditor:end */
+        },
+
+        invalidFocusRingColor: {
+            label: { en: 'Invalid focus ring color' },
+            type: 'Color',
+            section: 'style',
+            defaultValue: '#fca5a5',
+            bindable: true,
+            /* wwEditor:start */
+            bindingValidation: {
+                type: 'string',
+                tooltip: 'Outline color shown on keyboard focus when the checkbox is invalid.',
+            },
+            propertyHelp: {
+                tooltip: 'Overrides the default focus ring color when the checkbox is in an invalid state.',
             },
             /* wwEditor:end */
         },

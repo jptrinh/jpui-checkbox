@@ -159,6 +159,7 @@ export default {
             '--cb-unchecked-border': props.content?.uncheckedBorderColor || '#d1d5db',
             '--cb-unchecked-bg': props.content?.uncheckedBgColor || '#ffffff',
             '--cb-invalid-border': props.content?.invalidBorderColor || '#ef4444',
+            '--cb-invalid-focus-ring-color': props.content?.invalidFocusRingColor || '#fca5a5',
             '--cb-readonly-opacity': props.content?.readonlyOpacity ?? 1,
             '--cb-checked-hover': props.content?.checkedHoverColor || '#2563eb',
             '--cb-focus-ring-color': props.content?.focusRingColor || '#93c5fd',
@@ -292,6 +293,10 @@ context.local.data?.['checkbox']?.['isIndeterminate']
     &:focus-visible {
         outline: var(--cb-focus-ring-width) solid var(--cb-focus-ring-color);
         outline-offset: var(--cb-focus-ring-offset);
+    }
+
+    &.is-invalid:focus-visible {
+        outline-color: var(--cb-invalid-focus-ring-color);
     }
 
     &.is-readonly {
