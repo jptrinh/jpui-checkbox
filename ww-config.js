@@ -6,12 +6,12 @@ export default {
             {
                 label: 'Layout',
                 isCollapsible: true,
-                properties: ['labelPosition', 'verticalAlign', 'cursorPointer'],
+                properties: ['labelPosition', 'gap', 'verticalAlign', 'cursorPointer'],
             },
             {
                 label: 'Box',
                 isCollapsible: true,
-                properties: ['size', 'iconSize', 'borderRadius', 'borderWidth', 'gap', 'marginTop', 'marginBottom', 'shadow', 'animationDuration'],
+                properties: ['size', 'iconSize', 'borderRadius', 'borderWidth', 'marginTop', 'marginBottom', 'shadow', 'animationDuration'],
             },
             {
                 label: 'Unchecked',
