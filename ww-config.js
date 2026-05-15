@@ -716,6 +716,29 @@ export default {
         },
     },
 
+    actions: [
+        {
+            label: 'Check',
+            action: 'actionCheck',
+            args: [],
+        },
+        {
+            label: 'Uncheck',
+            action: 'actionUncheck',
+            args: [],
+        },
+        {
+            label: 'Toggle',
+            action: 'actionToggle',
+            args: [],
+        },
+        {
+            label: 'Set indeterminate',
+            action: 'actionSetIndeterminate',
+            args: [],
+        },
+    ],
+
     triggerEvents: [
         {
             name: 'change',

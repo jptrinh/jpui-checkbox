@@ -146,6 +146,36 @@ export default {
             emit('trigger-event', { name: newValue ? 'checked' : 'unchecked', event: { value: newValue } });
         };
 
+        // ─── Component actions ──────────────────────────────────────────────────
+
+        const actionCheck = () => {
+            if (internalValue.value === true) return;
+            setInternalValue(true);
+            emit('trigger-event', { name: 'change', event: { value: true } });
+            emit('trigger-event', { name: 'checked', event: { value: true } });
+        };
+
+        const actionUncheck = () => {
+            if (internalValue.value === false) return;
+            setInternalValue(false);
+            emit('trigger-event', { name: 'change', event: { value: false } });
+            emit('trigger-event', { name: 'unchecked', event: { value: false } });
+        };
+
+        const actionToggle = () => {
+            const newValue = internalValue.value !== true;
+            setInternalValue(newValue);
+            emit('trigger-event', { name: 'change', event: { value: newValue } });
+            emit('trigger-event', { name: newValue ? 'checked' : 'unchecked', event: { value: newValue } });
+        };
+
+        const actionSetIndeterminate = () => {
+            if (internalValue.value === null) return;
+            setInternalValue(null);
+            emit('trigger-event', { name: 'change', event: { value: null } });
+            emit('trigger-event', { name: 'indeterminate', event: { value: null } });
+        };
+
         // ─── Styles ─────────────────────────────────────────────────────────────
 
         const wrapperStyle = computed(() => ({
@@ -221,6 +251,10 @@ context.local.data?.['checkbox']?.['isIndeterminate']
             ariaChecked,
             wrapperStyle,
             handleToggle,
+            actionCheck,
+            actionUncheck,
+            actionToggle,
+            actionSetIndeterminate,
         };
     },
 };
