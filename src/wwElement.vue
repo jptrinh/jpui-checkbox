@@ -102,13 +102,13 @@ export default {
             uid: props.uid,
             name: 'value',
             type: 'any',
-            defaultValue: props.content?.initialValue ?? false,
+            defaultValue: props.content?.initialValue !== undefined ? props.content.initialValue : false,
         });
 
         watch(
             () => props.content?.initialValue,
             newValue => {
-                setInternalValue(newValue ?? false);
+                setInternalValue(newValue !== undefined ? newValue : false);
             },
             { immediate: true }
         );
@@ -118,7 +118,7 @@ export default {
         const fieldName = computed(() => props.content?.fieldName || props.wwElementState?.name || '');
         const validation = computed(() => props.content?.validation);
         const customValidation = computed(() => props.content?.customValidation);
-        const initialValue = computed(() => props.content?.initialValue ?? false);
+        const initialValue = computed(() => props.content?.initialValue !== undefined ? props.content.initialValue : false);
 
         const useForm = inject('_wwForm:useForm', () => {});
         useForm(
